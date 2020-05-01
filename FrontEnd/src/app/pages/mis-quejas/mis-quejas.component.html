@@ -1,0 +1,51 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row animated fadeIn">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+
+
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th class="text-left d-none d-lg-table-cell">Descripción</th>
+                                                <th class="text-left d-none d-lg-table-cell">Departamento</th>
+                                                <th class="text-center d-none d-lg-table-cell">Funcionario</th>
+                                                <th class="text-center d-none d-lg-table-cell">Estado</th>
+                                                <th class="text-center d-none d-lg-table-cell">Resolución</th>
+                                                <th class="text-center w-150">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <ngb-pagination class="d-flex justify-content-center"
+                                                        [(page)]="page" 
+                                                        [boundaryLinks]="true" [rotate]="true" [ellipses]="false"
+                                                        [maxSize]="5" [pageSize]="pageSize"></ngb-pagination>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

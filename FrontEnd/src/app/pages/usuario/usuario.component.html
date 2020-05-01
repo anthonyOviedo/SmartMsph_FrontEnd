@@ -1,0 +1,136 @@
+<!-- <div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="input-group">
+                    
+                    <input [(ngModel)]="criterio" name="criterio" (keyup)="cargarUsuarios()" type="text"
+                        class="form-control" placeholder="Buscar usuario...">
+
+                    <div class="input-group-append">
+                        <button (click)="limpiaCriterio()" class="btn btn-outline-danger no-border" type="button">
+                            <i class="material-icons">cancel</i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h3 class="card-title">Total registrados ( <small>{{ cantidad }}</small> )</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th class="text-center d-none d-lg-table-cell">Estado</th>
+                                <th class="text-center w-150">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let usuario of usuarios | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                <td>
+                                    {{ usuario.usuario_Id }}
+                                </td>
+                                <td>
+                                    {{ usuario.nombre }} <small *ngIf="usuario.usuario_Id === usuario_Id"> ( Yo )</small>
+                                </td>
+                                <td class="text-center d-none d-lg-table-cell">
+                                    {{ usuario.activo ? 'Activo' : 'Inactivo' }}
+                                </td>
+                                <td class="text-center w-150">
+                                    <button type="button" class="btn btn-primary" (click)="cargarUsuario( usuario )">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" (click)="eliminar( usuario )">
+                                        <i class="material-icons">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <ngb-pagination class="d-flex justify-content-center" [(page)]="page"
+                                        [collectionSize]="usuarios.length" [boundaryLinks]="true" [rotate]="true"
+                                        [ellipses]="false" [maxSize]="5" [pageSize]="pageSize"></ngb-pagination>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar( f )">
+
+                    <h3 id="titulo">{{ title }}</h3>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Usuario</label>
+                            <input [(ngModel)]="usuario.usuario_Id" name="usuario_Id" id="txtUsuario" type="email"
+                                class="form-control" placeholder="Usuario" autocomplete="new-password" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Nombre</label>
+                            <input [(ngModel)]="usuario.nombre" name="nombre" type="text" class="form-control"
+                                placeholder="Nombre" autocomplete="new-password" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Contraseña</label>
+                            <input [(ngModel)]="usuario.password" name="password" id="txtPassword" type="password"
+                                class="form-control" placeholder="Contraseña" autocomplete="new-password" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Activo</label>
+                            <select [(ngModel)]="usuario.activo" name="activo" class="form-control">
+                                <option value="false">NO</option>
+                                <option value="true">SI</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="float-right">
+                        <button type="submit" class="btn btn-primary" [disabled]="guardando">
+                            <i class="material-icons">done</i>
+                            Guardar
+                        </button>
+
+                        <button (click)="nuevo()" type="button" class="btn btn-secondary" [disabled]="guardando">
+                            <i class="material-icons">clear</i>
+                            Cancelar
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div> -->

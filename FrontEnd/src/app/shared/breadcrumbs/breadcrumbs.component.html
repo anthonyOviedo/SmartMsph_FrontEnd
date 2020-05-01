@@ -1,0 +1,17 @@
+<div class="row page-titles animated fadeIn">
+
+    <div class="col-md-5 align-self-start">
+        <h3>{{ titulo }}</h3>
+    </div>
+
+    <div class="col-md-7 align-self-start">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="pointer" [routerLink]="['/']">Inicio</a></li>
+                <li *ngIf="submenu !== ''" class="breadcrumb-item active"><a>{{ submenu }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ titulo }}</li>
+            </ol>
+        </nav>
+    </div>
+
+</div>

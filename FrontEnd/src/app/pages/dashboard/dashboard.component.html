@@ -1,0 +1,14 @@
+
+<ngb-carousel *ngIf="Noticias"  style="margin-top: 2px;">
+  <ng-template ngbSlide *ngFor="let item of Noticias">
+    <div class="picsum-img-wrapper">
+      <img [src]="item.fileToUpload" alt="Random slide" style="  border: #2a475e  27px solid; height: 500px;" >
+    </div>
+    <div class="carousel-caption">
+      <h3>{{item.titulo}}</h3>
+      <p>{{item.descripcion}}</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
+<!-- carrucel funcionando -->
+<!-- https://ng-bootstrap.github.io/#/components/carousel/examples#config -->

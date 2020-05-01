@@ -1,0 +1,213 @@
+<div class="row animated fadeIn"  id="titulo">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="ingresar(f)" class="form-login">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Título</label>
+                            <input [(ngModel)]="Noticia.titulo" name="titulo" type="text" class="form-control validate" placeholder="Título"
+                                required>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Escoger foto</label><br>
+                            <button (click)="AddPhoto()" type="button" class="btn btn-cyan" [disabled]="guardando">
+                                <i class="material-icons">photo</i> Agregar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label>Descripción</label>
+                            <textarea [(ngModel)]="Noticia.descripcion" name="descripcion" class="form-control validate" required>
+
+                        </textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="float-right" >
+                        
+                            <button type="submit" class="btn btn-success" [disabled]="ingresando">
+                                <i class="material-icons">save</i> Guardar
+                              
+                                </button>
+                        
+                        
+                            <button type="button" (click)="inicio()" class="btn btn-secondary" >Cancelar</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr style="color: whitesmoke; background: linear-gradient(#171a21,#1b2838,#2a475e ) !important;">
+                                <th class="text-center">#</th>
+                                <th class="text-center">Titulo</th>
+                                <th class="text-center w-150">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr *ngFor="let item of listNews">
+                                <td style="text-align: center;">
+                                    {{ item.new_id }}
+                                </td>
+                               
+                                <td class="text-center ">
+                                    {{ item.titulo }}
+                                </td>
+                                <td class="text-center w-150">
+                                    <button type="button"  class="btn btn-cyan" (click)="Detail(item)">
+                                        <i class="material-icons">info</i>
+                                   </button>
+                                     <button type="button"  class="btn btn-cyan" (click)="EditNew(item)">
+                                          <i class="material-icons">update</i>
+                                     </button>
+                                     <button type="button"  class="btn btn-danger" (click)="deletenew(item)">
+                                        <i class="material-icons">delete</i>
+                                   </button>
+                                </td>
+
+                           </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <ngb-pagination class="d-flex justify-content-center" [(page)]="page"
+                                    [collectionSize]="listNews.length" [boundaryLinks]="true" [rotate]="true"
+                                    [ellipses]="false" [maxSize]="5" [pageSize]="pageSize"></ngb-pagination>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+<!--news details-->
+<div class="modal fade " id="newsdatail" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable " role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title white-text w-100 font-weight-bold py-2">Detalle de la noticia</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+            
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>Descripción</label>
+                        <textarea   [(ngModel)]="Noticia.descripcion"  class="form-control validate" required>
+    
+                    </textarea>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col-md-12">
+                     
+                        <img id='Img1' [src]="Noticia.fileToUpload">
+                    </div>
+
+                </div>
+
+
+                
+            </div>
+            
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="GuardarFotos()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--agregar photo-->
+<div class="modal fade " id="addphoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Seleccione una foto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <input type='file' (change)="readUrl($event)">
+                <img id='Img1' [src]="Noticia.fileToUpload">
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="GuardarFotos()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,247 @@
+<div class="row animated fadeIn"  id="titulo">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Departamento</label>
+                        <select [(ngModel)]="department_Id" (change)="capturar( item )" class="form-control" required>
+                            <option value="-1">-- Seleccione un departamento --</option>
+                            <option *ngFor="let item of departmens" [value]="item.department_Id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Funcionario</label>
+                        <div class="input-group">
+                            <input [(ngModel)]="Funcio.nombre" name="employee" type="text" class="form-control"
+                                placeholder="Insertar funcionario" [value]="employee" required disabled>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" (click)="buscarEmployee()">
+                                    <i class="material-icons">search</i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>Descripción</label>
+                        <textarea [(ngModel)]="queja.Description" class="form-control" required>
+
+                        </textarea>
+                    </div>
+
+                </div>
+
+                <div class="float-right">
+                    <button type="submit" class="btn btn-success" (click)="enviar()" [disabled]="guardando">
+                        <i class="material-icons">save</i> Guardar
+                    </button>
+
+                    <button (click)="nuevo()" type="button" class="btn btn-secondary" [disabled]="cancelando">
+                        <i class="material-icons">clear</i> Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--funcionario modal  -->
+
+<div class="modal fade" id="funcionarioSearch" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Clientes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="FormValidation">
+                    <div class="alert alert-danger" role="alert">
+                        {{ErrorMessage}}
+                    </div>
+                </div>
+
+                <div class="input-group " style="margin-bottom: 16px;">
+                    <input [(ngModel)]="criterio" name="criterio" (keyup)="cargarClientes()" type="text"
+                        class="form-control" placeholder="Nombre del funcionario...">
+                    <div class="input-group-append">
+                        <button (click)="limpiaCriterio()" class="btn btn-outline-danger no-border" type="button">
+                            <i class="material-icons">cancel</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive" style="height: 24rem !important; overflow: scroll;">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido1</th>
+                                <th>Apellido2</th>
+                                <th>Seleccionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of funcionarios">
+                                <td>
+                                    {{ item.nombre }}
+                                </td>
+                                <td>
+                                    {{ item.apellido1 }}
+                                </td>
+                                <td>
+                                    {{ item.apellido2 }}
+                                </td>
+
+
+                                <td>
+                                    <button type="button" class="btn btn-cyan" (click)="agregarFuncionario(item)">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row animated fadeIn">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+
+
+                                <div class="table-responsive" style="overflow-x: scroll;">
+                                    <table class="table table-hover">
+                                        <thead style="color: whitesmoke; background: linear-gradient(#171a21,#1b2838,#2a475e ) !important;">
+                                            <tr>
+                                                <th class=" ">#</th>
+                                                <th class=" ">Fecha</th>
+                                                <th class=" ">Departamento</th>
+                                                <th class=" ">Funcionario</th>
+                                                <th class=" ">Estado</th>
+                                                
+                                                <th class="text-center w-150">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr *ngFor="let item of complains">
+                                              
+                                                <td class="">
+                                                    {{ item.Complain_Id }}
+                                                </td>
+                                                <td class=" ">
+                                                    {{ item.fecha | date:'yyyy-MM-dd' }}
+                                                </td>
+                                                <td class=" ">
+                                                    {{ item.departmentname }}
+                                                </td>
+                                                <td class=" ">
+                                                    {{ item.employee_name }}
+                                                </td>
+                                                <td class=" ">
+                                                    {{ item.state }}
+                                                </td>
+                                               
+                                                <td class="text-center w-150"  >
+                                                    <button type="button" class="btn btn-cyan"
+                                                        (click)="complaindatail(item)">
+                                                        <i class="material-icons">info</i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-cyan"
+                                                        (click)="EditComplain(item)">
+                                                        <i class="material-icons">update</i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        (click)="deleteComplain(item)">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <ngb-pagination class="d-flex justify-content-center" [(page)]="page"
+                                                    [collectionSize]="complains.length" [boundaryLinks]="true" [rotate]="true"
+                                                    [ellipses]="false" [maxSize]="5" [pageSize]="pageSize"></ngb-pagination>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--denounces details-->
+<div class="modal fade " id="complaindatail" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title white-text w-100 font-weight-bold py-2">Detalle de la queja</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+
+                <div class="row">
+                    <div class="form-group col-md-12 text-center">
+                        <label>Descripción</label>
+                        <label class="form-control validate" required>
+                            {{Description}}
+                        </label>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

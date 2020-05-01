@@ -1,0 +1,141 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+
+
+
+<aside class="left-sidebar" data-sidebarbg="skin5">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar sidebar-color">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav" class="p-t-30">
+
+                <li class="sidebar-item" routerLinkActive="selected">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/dashboard']"
+                        routerLinkActive="active">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span class="hide-menu">Noticias</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item" routerLinkActive="selected">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                        aria-expanded="false" routerLinkActive="active">
+                        <i class="mdi mdi-move-resize-variant"></i>
+                        <span class="hide-menu">Mantenimientos </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+
+
+
+                        <li class="sidebar-item" routerLinkActive="active">
+                            <a class="sidebar-link" [routerLink]="['/funcionario']" routerLinkActive="active">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu"> Funcionario </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item" routerLinkActive="active">
+                            <a class="sidebar-link" [routerLink]="['/Departamentos']" routerLinkActive="active">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu"> Departamentos </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item" routerLinkActive="active">
+                            <a class="sidebar-link" [routerLink]="['/news']" routerLinkActive="active">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu"> Noticias </span>
+                            </a>
+                        </li>
+
+
+
+                        <!-- <li class="sidebar-item" routerLinkActive="active">
+                            <a class="sidebar-link" [routerLink]="['/usuario']" routerLinkActive="active">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu"> Usuario </span>
+                            </a>
+                        </li> -->
+
+
+                    </ul>
+                </li>
+
+                <li class="sidebar-item" routerLinkActive="selected">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark pointer" aria-expanded="false"
+                            routerLinkActive="active">
+                        <i class="mdi mdi-move-resize-variant"></i>
+                        <span class="hide-menu"> Quejas </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level" >
+                        <li class="sidebar-item" routerLinkActive="active">
+                            <a class="sidebar-link" [routerLink]="['/crearQueja']" routerLinkActive="active">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu"> Mis Quejas </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="sidebar-item" routerLinkActive="selected">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                        aria-expanded="false" routerLinkActive="active">
+                        <i class="mdi mdi-move-resize-variant"></i>
+                        <span class="hide-menu">Denuncias </span>
+                    </a>
+
+                    <ul aria-expanded="false" class="collapse first-level"  >
+                        <li class="sidebar-item" routerLinkActive="active">
+                            <a class="sidebar-link" [routerLink]="['/crearDenuncias']" routerLinkActive="active">
+                                <i class="mdi mdi-view-dashboard"></i>
+                              <span class="hide-menu" > Mis Denuncias </span>
+                            </a> 
+                        </li>    
+                     
+                    </ul>
+
+                </li>
+
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+
+<!--REGISTER MODAL-->
+<div class="modal fade" id="OpcionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header text-center">
+                <h4 class="modal-title white-text w-100 font-weight-bold py-2">Tipo de denuncia</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+
+            </div>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center modal-footer">
+                
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+
+
+
+
