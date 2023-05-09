@@ -29,7 +29,7 @@
     "bootstrap": "^4.4.1",
     "crypto-js": "^3.1.9-1",
     "install": "^0.13.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-bootstrap": "^5.2.0",
     "ngx-daterange": "^1.0.17",
     "ngx-pagination": "^4.1.0",
